@@ -59,7 +59,7 @@ Buka terminal, masuk ke folder tadi:
 ```bash
 cd path/ke/tugas-besar-rekayasa-fitur
 ```
-
+### OPSI 1
 ### Langkah 1 — Buat dataset
 ```bash
 python3 00_generate_dataset.py
@@ -98,6 +98,30 @@ Setelah selesai, folder akan berisi file baru ini:
 | `plot_feature_importance.png` | Grafik top 10 fitur terpenting |
 
 Buka file-file `.png` dan `.csv` tersebut untuk melihat hasilnya. Angka dan grafik inilah yang sudah dimasukkan ke laporan Word.
+
+### OPSI 2 (Program Dieksekusi menggunakan streamlit)
+### Langkah 1 — Jalankan Program
+```bash
+python -m streamlit run 01_feature_engineering_modeling.py
+```
+**Yang terjadi:** Pada mode ini, program dijalankan melalui antarmuka web Streamlit. Jika kamu belum memiliki dataset asli dari Kaggle, maka sebelumnya jalankan script 00_generate_dataset.py untuk membuat file train.csv berisi 1.200 baris data simulasi. File tersebut akan otomatis tersimpan di folder yang sama.
+```
+Jika kamu sudah memiliki file train.csv asli dari Kaggle, cukup letakkan file itu di folder yang sama dengan nama persis train.csv, lalu program akan langsung mengeluarkan hasil dari file train.csv yang sudah dijalankan.
+...
+
+```
+### Langkah 2 — Cek hasilnya
+Setelah selesai, maka akan keluar output berupa:
+
+| File | Isi |
+|---|---|
+| `model_results.csv` | Tabel RMSE, MAE, R² untuk tiap model |
+| `feature_importances.csv` | Skor pentingnya tiap fitur (dari Random Forest) |
+| `plot_actual_vs_predicted.png` | Grafik harga aktual vs prediksi |
+| `plot_model_comparison.png` | Grafik perbandingan RMSE & R² antar model |
+| `plot_feature_importance.png` | Grafik top 10 fitur terpenting |
+
+Buka atau download file-file `.png` dan `.csv` tersebut untuk melihat hasilnya. Angka dan grafik inilah yang sudah dimasukkan ke laporan Word.
 
 ---
 
