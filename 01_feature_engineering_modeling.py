@@ -238,6 +238,31 @@ def main():
         st.subheader("📈 Hasil Evaluasi Model")
         st.dataframe(results_df, use_container_width=True)
 
+        # --- PENJELASAN KINERJA MODEL TERBAIK ---
+        # Mengambil baris model dengan RMSE terendah dan R2 tertinggi
+        best_row = results_df.loc[results_df['RMSE'].idxmin()]
+        worst_row = results_df.loc[results_df['RMSE'].idxmax()]
+
+        best_name = best_row['Model']
+        worst_name = worst_row['Model']
+
+        best_rmse = best_row['RMSE']
+        best_mae = best_row['MAE']
+        best_r2 = best_row['R2']
+
+        worst_rmse = worst_row['RMSE']
+        worst_r2 = worst_row['R2']
+
+        # Teks penjelasan otomatis
+        st.info(f"📝 **Analisis Kinerja Model Terbaik**\n\n"
+                f"Berdasarkan hasil evaluasi, model **{best_name}** menunjukkan kinerja terbaik dibandingkan dengan **{worst_name}**. "
+                f"Berikut adalah rincian analisisnya:\n\n"
+                f"- **RMSE (Root Mean Squared Error)**: {best_name} memiliki nilai RMSE sebesar **{best_rmse:,.2f}**, lebih rendah dibandingkan {worst_name} ({worst_rmse:,.2f}). "
+                f"Nilai yang lebih rendah menunjukkan bahwa {best_name} memiliki tingkat kesalahan prediksi yang lebih kecil.\n\n"
+                f"- **R² (R-Squared)**: {best_name} mencapai skor R² sebesar **{best_r2:.4f}** ({best_r2*100:.2f}%), sedangkan {worst_name} hanya mendapatkan {worst_r2:.4f} ({worst_r2*100:.2f}%). "
+                f"Skor R² yang lebih tinggi (mendekati 1) berarti {best_name} jauh lebih baik dalam menjelaskan variasi data harga rumah berdasarkan fitur-fitur yang digunakan.\n\n"
+                f"👉 **Kesimpulan:** Model **{best_name}** adalah pilihan paling optimal untuk dataset ini karena memberikan tingkat error yang paling minimal dan akurasi prediksi yang paling tinggi.")
+        
         # Tombol unduh hasil evaluasi (Excel)
         st.download_button(
             label="⬇️ Unduh Hasil Evaluasi (Excel)",
@@ -250,7 +275,6 @@ def main():
         st.subheader("📉 Visualisasi Analisis")
         tab1, tab2, tab3 = st.tabs(["Aktual vs Prediksi", "Perbandingan Metrik", "Feature Importance"])
 
-        best_name = results_df.sort_values("RMSE").iloc[0]["Model"]
         best_pred = predictions[best_name]
 
         # ---------------- TAB 1: Aktual vs Prediksi ----------------
