@@ -119,6 +119,8 @@ Setelah selesai, folder akan berisi file baru ini:
 
 Buka file-file `.png` dan `.csv` tersebut untuk melihat hasilnya. Angka dan grafik inilah yang sudah dimasukkan ke laporan Word.
 
+### ==============================================================================================================
+
 ### OPSI 2 (Program Dieksekusi menggunakan streamlit)
 
 ### Langkah 1 — Jalankan Program
