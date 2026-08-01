@@ -14,10 +14,10 @@
 
 Artinya: **file 01 tidak akan bisa jalan kalau `train.csv` belum ada** di folder yang sama. Ada dua cara menyediakan `train.csv`:
 
-| Cara | Kapan dipakai |
-|---|---|
+| Cara                                   | Kapan dipakai                                                                       |
+| -------------------------------------- | ----------------------------------------------------------------------------------- |
 | Jalankan `00_generate_dataset.py` dulu | Kalau kamu belum punya dataset asli dari Kaggle, atau hanya ingin menguji/coba kode |
-| Taruh `train.csv` asli dari Kaggle | Direkomendasikan untuk laporan final yang dikumpulkan ke dosen |
+| Taruh `train.csv` asli dari Kaggle     | Direkomendasikan untuk laporan final yang dikumpulkan ke dosen                      |
 
 Kedua cara menghasilkan file dengan nama dan skema kolom yang sama persis, jadi **file 01 tidak perlu diubah kodenya sama sekali** — tinggal jalankan.
 
@@ -26,29 +26,39 @@ Kedua cara menghasilkan file dengan nama dan skema kolom yang sama persis, jadi 
 ## 2. Persiapan (sekali saja)
 
 ### 2.1 Pastikan Python terpasang
+
 Buka terminal / command prompt, ketik:
+
 ```bash
 python3 --version
 ```
+
 Kalau muncul versi (mis. `Python 3.10.x`), Python sudah siap. Kalau belum ada, unduh dari [python.org](https://www.python.org/downloads/).
 
 ### 2.2 Pasang library yang dibutuhkan
+
 Jalankan sekali di terminal:
+
 ```bash
 pip install pandas numpy scikit-learn matplotlib
 ```
+
 Kalau muncul error izin akses, tambahkan `--user`:
+
 ```bash
 pip install --user pandas numpy scikit-learn matplotlib
 ```
 
 ### 2.3 Kumpulkan file dalam satu folder
+
 Buat satu folder khusus, misalnya `tugas-besar-rekayasa-fitur`, lalu masukkan **kedua file `.py`** ke dalamnya:
+
 ```
 tugas-besar-rekayasa-fitur/
 ├── 00_generate_dataset.py
 └── 01_feature_engineering_modeling.py
 ```
+
 Semua file hasil (dataset, grafik, tabel) nanti otomatis tersimpan di folder yang sama ini.
 
 ---
@@ -56,15 +66,21 @@ Semua file hasil (dataset, grafik, tabel) nanti otomatis tersimpan di folder yan
 ## 3. Menjalankan program — langkah demi langkah
 
 Buka terminal, masuk ke folder tadi:
+
 ```bash
 cd path/ke/tugas-besar-rekayasa-fitur
 ```
+
 ### OPSI 1
+
 ### Langkah 1 — Buat dataset
+
 ```bash
 python3 00_generate_dataset.py
 ```
+
 **Yang terjadi:** skrip membuat 1.200 baris data rumah simulasi dan menyimpannya sebagai `train.csv` di folder yang sama. Kamu akan melihat output seperti:
+
 ```
 BERHASIL: train.csv dibuat -> 1200 baris, 33 kolom
 ...
@@ -75,10 +91,13 @@ Langkah selanjutnya: jalankan
 > Kalau kamu sudah punya `train.csv` **asli** dari Kaggle, lewati langkah ini — cukup taruh file itu di folder yang sama dengan nama persis `train.csv`.
 
 ### Langkah 2 — Jalankan pipeline utama
+
 ```bash
 python3 01_feature_engineering_modeling.py
 ```
+
 **Yang terjadi**, tahap demi tahap (progress tercetak sebagai `[1/6]` sampai `[6/6]`):
+
 1. **Memuat data** dari `train.csv`
 2. **Pra-pemrosesan** — mengisi nilai yang hilang (missing value)
 3. **Rekayasa fitur** — membuat fitur baru, binning, encoding
@@ -87,39 +106,46 @@ python3 01_feature_engineering_modeling.py
 6. **Visualisasi** — membuat 3 grafik hasil
 
 ### Langkah 3 — Cek hasilnya
+
 Setelah selesai, folder akan berisi file baru ini:
 
-| File | Isi |
-|---|---|
-| `model_results.csv` | Tabel RMSE, MAE, R² untuk tiap model |
-| `feature_importances.csv` | Skor pentingnya tiap fitur (dari Random Forest) |
-| `plot_actual_vs_predicted.png` | Grafik harga aktual vs prediksi |
-| `plot_model_comparison.png` | Grafik perbandingan RMSE & R² antar model |
-| `plot_feature_importance.png` | Grafik top 10 fitur terpenting |
+| File                           | Isi                                             |
+| ------------------------------ | ----------------------------------------------- |
+| `model_results.csv`            | Tabel RMSE, MAE, R² untuk tiap model            |
+| `feature_importances.csv`      | Skor pentingnya tiap fitur (dari Random Forest) |
+| `plot_actual_vs_predicted.png` | Grafik harga aktual vs prediksi                 |
+| `plot_model_comparison.png`    | Grafik perbandingan RMSE & R² antar model       |
+| `plot_feature_importance.png`  | Grafik top 10 fitur terpenting                  |
 
 Buka file-file `.png` dan `.csv` tersebut untuk melihat hasilnya. Angka dan grafik inilah yang sudah dimasukkan ke laporan Word.
 
 ### OPSI 2 (Program Dieksekusi menggunakan streamlit)
+
 ### Langkah 1 — Jalankan Program
+
 ```bash
 python -m streamlit run 01_feature_engineering_modeling.py
 ```
+
 **Yang terjadi:** Pada mode ini, program dijalankan melalui antarmuka web Streamlit. Jika kamu belum memiliki dataset asli dari Kaggle, maka sebelumnya jalankan script 00_generate_dataset.py untuk membuat file train.csv berisi 1.200 baris data simulasi. File tersebut akan otomatis tersimpan di folder yang sama.
+
 ```
 Jika kamu sudah memiliki file train.csv asli dari Kaggle, cukup letakkan file itu di folder yang sama dengan nama persis train.csv, lalu program akan langsung mengeluarkan hasil dari file train.csv yang sudah dijalankan.
 ...
 
 ```
+
 ### Langkah 2 — Cek hasilnya
+
 Setelah selesai, maka akan keluar output berupa:
 
-| File | Isi |
-|---|---|
-| `model_results.csv` | Tabel RMSE, MAE, R² untuk tiap model |
-| `feature_importances.csv` | Skor pentingnya tiap fitur (dari Random Forest) |
-| `plot_actual_vs_predicted.png` | Grafik harga aktual vs prediksi |
-| `plot_model_comparison.png` | Grafik perbandingan RMSE & R² antar model |
-| `plot_feature_importance.png` | Grafik top 10 fitur terpenting |
+| File                           | Isi                                             |
+| ------------------------------ | ----------------------------------------------- |
+| `model_results.csv`            | Tabel RMSE, MAE, R² untuk tiap model            |
+| `feature_importances.csv`      | Skor pentingnya tiap fitur (dari Random Forest) |
+| `plot_actual_vs_predicted.png` | Grafik harga aktual vs prediksi                 |
+| `plot_model_comparison.png`    | Grafik perbandingan RMSE & R² antar model       |
+| `plot_feature_importance.png`  | Grafik top 10 fitur terpenting                  |
 
 Buka atau download file-file `.png` dan `.csv` tersebut untuk melihat hasilnya. Angka dan grafik inilah yang sudah dimasukkan ke laporan Word.
 
@@ -140,13 +166,19 @@ Buka atau download file-file `.png` dan `.csv` tersebut untuk melihat hasilnya. 
 
 ## 5. Troubleshooting (masalah umum)
 
-| Pesan error | Penyebab | Solusi |
-|---|---|---|
-| `FileNotFoundError: train.csv` | File 01 dijalankan sebelum file 00, atau beda folder | Jalankan `00_generate_dataset.py` dulu di folder yang sama |
-| `ModuleNotFoundError: No module named 'sklearn'` | Library belum terpasang | Jalankan `pip install pandas numpy scikit-learn matplotlib` |
-| `python3: command not found` | Python belum terpasang / pakai perintah `python` bukan `python3` (umum di Windows) | Coba `python 00_generate_dataset.py` |
-| Grafik `.png` tidak muncul / kosong | Belum sempat cek folder setelah program selesai | Refresh folder file explorer, cek nama file `plot_*.png` |
+| Pesan error                                                                                                              | Penyebab                                                                                                                                                                                                  | Solusi                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FileNotFoundError: train.csv`                                                                                           | File 01 dijalankan sebelum file 00, atau beda folder                                                                                                                                                      | Jalankan `00_generate_dataset.py` dulu di folder yang sama                                                                                                      |
+| `ModuleNotFoundError: No module named 'sklearn'`                                                                         | Library belum terpasang                                                                                                                                                                                   | Jalankan `pip install pandas numpy scikit-learn matplotlib`                                                                                                     |
+| `python3: command not found`                                                                                             | Python belum terpasang / pakai perintah `python` bukan `python3` (umum di Windows)                                                                                                                        | Coba `python 00_generate_dataset.py`                                                                                                                            |
+| Grafik `.png` tidak muncul / kosong                                                                                      | Belum sempat cek folder setelah program selesai                                                                                                                                                           | Refresh folder file explorer, cek nama file `plot_*.png`                                                                                                        |
 | `ValueError: could not convert string to float: 'RL'` (atau nilai teks lain) saat pakai `train.csv` **asli** dari Kaggle | Versi kode sebelumnya hanya mengenali sedikit kolom kategorikal secara manual, padahal data asli Kaggle punya 81 kolom dengan puluhan kolom teks tambahan (`MSZoning`, `Exterior1st`, `Foundation`, dll.) | Sudah diperbaiki — unduh ulang `01_feature_engineering_modeling.py` versi terbaru; sekarang kode **otomatis mendeteksi semua kolom teks**, berapa pun jumlahnya |
+
+| `streamlit: command not found / 'streamlit' is not recognized as an internal or external command` Streamlit belum terpasang atau PATH tidak dikenali, install `pip install streamlit` lalu jalankan ulang terminal. Jika tetap tidak bisa, aktifkan virtual environment sebelum menjalankan perintah |
+
+| `Warning missing ScriptRunContext saat jalankan dengan python file.py` Streamlit tidak boleh dijalankan langsung dengan python, harus lewat command khusus, gunakan `streamlit run 01_feature_engineering_modeling.py` |
+
+| `Aplikasi tidak terbuka di browser` Port default (8501) tidak otomatis terbuka, atau firewall memblokir, Buka manual link `http://localhost:8501` di browser. Jika bentrok port, jalankan dengan `streamlit run 01_feature_engineering_modeling.py --server.port 8502` |
 
 ---
 
