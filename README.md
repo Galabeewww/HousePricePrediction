@@ -127,7 +127,7 @@ Buka file-file `.png` dan `.csv` tersebut untuk melihat hasilnya. Angka dan graf
 python -m streamlit run 01_feature_engineering_modeling.py
 ```
 
-**Yang terjadi:** Pada mode ini, program dijalankan melalui antarmuka web Streamlit. Jika kamu sudah memiliki file train.csv asli dari Kaggle, cukup letakkan file itu di folder yang sama dengan nama persis train.csv, lalu program akan langsung mengeluarkan hasil dari file train.csv yang sudah dijalankan.
+**Yang terjadi:** Pada mode ini, program dijalankan melalui antarmuka web Streamlit. Jika kamu sudah memiliki file train.csv asli dari Kaggle, cukup letakkan file pada kolom unggah train.csv, lalu program akan langsung mengeluarkan hasil dari file train.csv yang sudah dijalankan.
 
 ````
 
