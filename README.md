@@ -65,7 +65,7 @@ Semua file hasil (dataset, grafik, tabel) nanti otomatis tersimpan di folder yan
 
 ## 3. Menjalankan program — langkah demi langkah
 
-Buka terminal, masuk ke folder tadi:
+Buka terminal, masuk ke folder dimana program kamu berada (misal):
 
 ```bash
 cd path/ke/tugas-besar-rekayasa-fitur
