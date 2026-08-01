@@ -127,12 +127,9 @@ Buka file-file `.png` dan `.csv` tersebut untuk melihat hasilnya. Angka dan graf
 python -m streamlit run 01_feature_engineering_modeling.py
 ```
 
-**Yang terjadi:** Pada mode ini, program dijalankan melalui antarmuka web Streamlit.
+**Yang terjadi:** Pada mode ini, program dijalankan melalui antarmuka web Streamlit. Jika kamu sudah memiliki file train.csv asli dari Kaggle, cukup letakkan file itu di folder yang sama dengan nama persis train.csv, lalu program akan langsung mengeluarkan hasil dari file train.csv yang sudah dijalankan.
 
-```
-Jika kamu sudah memiliki file train.csv asli dari Kaggle, cukup letakkan file itu di folder yang sama dengan nama persis train.csv, lalu program akan langsung mengeluarkan hasil dari file train.csv yang sudah dijalankan.
-
-```
+````
 
 ### Langkah 2 — Cek hasilnya
 
@@ -158,7 +155,8 @@ Buka atau download file-file `.png` dan `.csv` tersebut untuk melihat hasilnya. 
 4. Jalankan ulang **hanya langkah 2** (tidak perlu jalankan `00_generate_dataset.py` lagi):
    ```bash
    python3 01_feature_engineering_modeling.py
-   ```
+````
+
 5. Semua tabel, metrik, dan grafik akan otomatis dihitung ulang berdasarkan data asli. Salin angka & grafik baru itu ke laporan Word untuk hasil final yang paling akurat.
 
 ---
