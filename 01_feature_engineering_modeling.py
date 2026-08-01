@@ -45,6 +45,7 @@
 
 
 # KODE PROGRAM OPSI B (Streamlit)
+# UNTUK KODE PROGRAM OPSI A ADA DIBAWAH KODE INI
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
