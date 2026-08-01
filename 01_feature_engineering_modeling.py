@@ -17,7 +17,7 @@
 #     Opsi B (dengan dataset asli, direkomendasikan untuk laporan final):
 #         unduh train.csv dari
 #         https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data
-#         lalu taruh di folder yang sama dengan nama PERSIS "train.csv".
+#         lalu upload file "train.csv".
 #         (Skema kolomnya sama, jadi tidak perlu ubah kode apa pun di file ini.)
 
 # Setelah train.csv tersedia (lewat opsi A ATAU B), baru jalankan file ini:
@@ -43,6 +43,8 @@
 # ==============================================================================
 # """
 
+
+# KODE PROGRAM OPSI B (Streamlit)
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -354,6 +356,8 @@ def main():
 if __name__ == "__main__":
     main()
 
+
+# KODE PROGRAM UNTUK OPSI A
 
 # import numpy as np
 # import pandas as pd
